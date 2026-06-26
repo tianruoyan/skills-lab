@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>6月26日投资监测复盘</title>
-  <meta name="description" content="2026-06-26 A股港股盘中监测、收盘复盘、观察池与微信转发版。">
+  <meta name="description" content="2026-06-26 A股港股盘中监测、收盘复盘、观察池与网页复盘。">
   <style>
     :root {
       --bg:#f6f7f9; --panel:#fff; --text:#15181d; --muted:#626a73; --line:#dfe3e8;
@@ -18,9 +18,8 @@
     .topbar{position:sticky;top:0;z-index:10;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0 14px;background:rgba(246,247,249,.96);backdrop-filter:blur(10px)}
     .brand{display:flex;align-items:center;gap:10px;min-width:0}.mark{width:34px;height:34px;border-radius:8px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800}
     .brand-title{font-size:15px;font-weight:760;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.brand-sub{font-size:12px;color:var(--muted);margin-top:1px}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-    button,.link-button{border:1px solid var(--line);background:#fff;color:var(--text);min-height:36px;border-radius:8px;padding:0 12px;font-weight:680;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
-    button:hover,.link-button:hover{border-color:#b9c2cc;text-decoration:none}
+    button{border:1px solid var(--line);background:#fff;color:var(--text);min-height:36px;border-radius:8px;padding:0 12px;font-weight:680;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+    button:hover{border-color:#b9c2cc;text-decoration:none}
     .hero,.panel,details{background:var(--panel);border:1px solid var(--line);border-radius:8px}
     .hero{padding:20px;box-shadow:var(--shadow)}.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.8fr);gap:18px;align-items:stretch}
     h1{margin:0;font-size:clamp(26px,4vw,42px);line-height:1.08;letter-spacing:0}.date-line{color:var(--muted);margin:10px 0 14px;font-size:14px}
@@ -45,9 +44,7 @@
     .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.filters button[aria-pressed=true]{color:#fff;background:var(--ink);border-color:var(--ink)}
     .stock-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stock{border:1px solid var(--line);border-radius:8px;padding:11px;background:#fff}.stock-name{display:flex;justify-content:space-between;gap:8px;font-weight:760}.stock-meta{color:var(--muted);font-size:12px;margin:5px 0 8px}.stock-news{font-size:13px;color:#343a40}
     details{padding:12px}details+details{margin-top:10px}summary{cursor:pointer;font-weight:780}
-    .wechat-box{width:100%;min-height:420px;border:1px solid var(--line);border-radius:8px;padding:12px;resize:vertical;font:14px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:#fff}
     .source-list{display:grid;gap:8px;font-size:13px}.disclaimer{margin-top:20px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
-    .toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:20;font-size:13px}.toast.show{opacity:1}
     @media (max-width:880px){.hero-grid,.grid-2,.grid-3{grid-template-columns:1fr}.verdict{grid-template-columns:1fr}.stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media (max-width:560px){.page{padding:10px 10px 40px}.topbar{align-items:flex-start}.actions{display:none}.hero{padding:14px}.metric-grid{grid-template-columns:1fr}.stock-grid{grid-template-columns:1fr}.time-row{grid-template-columns:1fr;gap:6px}.section-head{align-items:flex-start;flex-direction:column}.section-note{text-align:left}h1{font-size:28px}.bar-row{grid-template-columns:88px minmax(0,1fr) 44px}}
   </style>
@@ -59,12 +56,8 @@
         <div class="mark">投</div>
         <div>
           <div class="brand-title">投资监测日报</div>
-          <div class="brand-sub">盘中监测 · 收盘复盘 · 观察池 · 微信版</div>
+          <div class="brand-sub">盘中监测 · 收盘复盘 · 观察池 · 网页版</div>
         </div>
-      </div>
-      <div class="actions">
-        <a class="link-button" href="#wechat">微信版</a>
-        <button type="button" data-copy="#wechatText">复制微信版</button>
       </div>
     </header>
 
@@ -104,7 +97,6 @@
         <a href="#review">收盘复盘</a>
         <a href="#pool">高位回撤池</a>
         <a href="#watchlist">观察池</a>
-        <a href="#wechat">微信转发</a>
         <a href="#sources">来源</a>
       </nav>
 
@@ -321,75 +313,6 @@
         </div>
       </section>
 
-      <section id="wechat">
-        <div class="section-head">
-          <h2>微信转发版</h2>
-          <div class="section-note">可直接复制到微信。</div>
-        </div>
-        <div class="panel">
-          <div class="panel-title">一键复制 <button type="button" data-copy="#wechatText">复制</button></div>
-          <textarea class="wechat-box" id="wechatText" readonly>【6月26日收盘复盘｜全市场强弱分层，材料硬线扩散，光通信退潮】
-
-一、今日结论
-今天不是科技全面修复，而是全市场强弱分层：
-强的是半导体材料/设备、PCB/玻纤、AI应用情绪点；
-弱的是光通信/CPO、算力硬件、存储/HBM核心高位股。
-
-主线判断不是只看观察池，而是看全市场涨停、跌停、成交、资金和题材扩散。
-
-二、市场温度
-涨幅≥5%：214只
-5%-8%：102只
-8%以上：112只
-涨停：60只
-炸板：35只
-跌停：30只
-最高连板：6板，兴业科技
-
-炸板率约36.8%，说明情绪不是很稳。跌停扩到30只，尾盘风险仍在。
-
-三、强主线
-1. 半导体材料/设备/长鑫链
-理由：全市场不是单一个股强，有研硅、正帆科技、富创精密均20cm涨停，江丰电子、新莱应材、华海诚科、沪硅产业继续大成交活跃。
-这条线的强度来自20cm高弹性、材料低位补涨、长鑫链真实订单预期共振。
-
-2. PCB/玻纤/电子材料
-理由：国际复材+9.17%，成交92.27亿；中材科技+5.10%，南亚新材、宏和科技、超声电子等仍活跃。
-这不是新题材首日，而是前几日强势热点继续维持，后续要看高位是否还能承接。
-
-3. AI应用/智谱AI
-理由：天娱数科涨停，成交42.09亿，换手30.43%，主力净流入约9.72亿，是全天最强情绪锚。
-但目前仍偏单核，明天必须看到更多AI软件/传媒/应用股跟随，才算从情绪点变成全面主线。
-
-四、风险线
-1. 光通信/CPO/算力硬件退潮
-光迅科技-8.08%，主力净流出约23.46亿；
-永鼎股份-9.94%，烽火通信-10%，特发信息-10.01%，利通电子-10%。
-通信设备是今天跌停最集中的方向之一，说明这不是单股补跌，而是前期高位主线的系统性退潮。
-
-2. 存储/HBM分化
-兆易创新收盘-0.67%，尾盘修复，但主力仍净流出约34亿；
-澜起科技-6.21%，主力净流出约19.67亿。
-材料端雅克、华海较强，但核心芯片大票资金撤离，说明存储内部已经从共振上涨转为强弱筛选。
-
-3. 尾盘情绪风险
-涨停60只，但炸板35只、跌停30只。
-强线很强，弱线也在杀，不能把所有回撤都当成低吸机会。
-
-五、明日重点
-看三件事：
-1. 半导体材料/设备能否继续扩散到低位补涨；
-2. 国际复材、中材科技代表的PCB/玻纤能否继续放量承接；
-3. 天娱数科能否带动AI应用从单核变多点；
-4. 光迅、永鼎、烽火、特发是否止跌。
-
-失效条件：
-如果明天半导体材料和PCB玻纤不能扩散，同时光通信/CPO跌停继续增加，就按高位退潮延续处理，避免追高。
-
-仅作市场跟踪，不构成投资建议。</textarea>
-        </div>
-      </section>
-
       <section id="sources">
         <div class="section-head">
           <h2>数据来源</h2>
@@ -420,19 +343,7 @@
       </div>
     </main>
   </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite">已复制</div>
   <script>
-    const toast = document.getElementById('toast');
-    function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500)}
-    document.querySelectorAll('[data-copy]').forEach((button)=>{
-      button.addEventListener('click', async ()=>{
-        const target=document.querySelector(button.dataset.copy);
-        const text=target ? target.value || target.textContent : '';
-        try{await navigator.clipboard.writeText(text.trim());showToast('已复制微信版')}
-        catch(error){if(target&&target.select)target.select();document.execCommand('copy');showToast('已复制微信版')}
-      });
-    });
     const filterButtons=document.querySelectorAll('[data-filter]');
     const stocks=document.querySelectorAll('.stock');
     filterButtons.forEach((button)=>{
